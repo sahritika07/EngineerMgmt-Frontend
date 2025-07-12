@@ -2,37 +2,15 @@
 import { useState } from "react"
 
 const skillOptions = [
-  "React",
-  "Vue.js",
-  "Angular",
-  "Node.js",
-  "Express.js",
-  "Python",
-  "Django",
-  "Flask",
-  "C#",
-  ".NET",
-  "PHP",
-  "Laravel",
-  "Go",
-  "Rust",
-  "Java",
-  "Spring Boot",
-  "HTML/CSS",
-  "JavaScript",
-  "TypeScript",
-  "PostgreSQL",
-  "MySQL",
-  "MongoDB",
-  "Redis",
-  "Docker",
-  "Kubernetes",
-  "AWS",
-  "Azure",
-  "GCP",
+  "React", "Vue.js", "Angular", "Node.js", "Express.js",
+  "Python", "Django", "Flask", "C#", ".NET",
+  "PHP", "Laravel", "Go", "Rust", "Java",
+  "Spring Boot", "HTML/CSS", "JavaScript", "TypeScript",
+  "PostgreSQL", "MySQL", "MongoDB", "Redis",
+  "Docker", "Kubernetes", "AWS", "Azure", "GCP"
 ]
 
-export default function AddEngineerModal({ onClose, onSubmit }) {
+export default function AddEngineerModal({ onClose, onEngineerAdded }) {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -47,26 +25,55 @@ export default function AddEngineerModal({ onClose, onSubmit }) {
     skills: [],
   })
   const [skillsError, setSkillsError] = useState("")
+  const [loading, setLoading] = useState(false)
 
   const handleSkillToggle = (skill) => {
     const updatedSkills = formData.skills.includes(skill)
       ? formData.skills.filter((s) => s !== skill)
       : [...formData.skills, skill]
-
     setFormData({ ...formData, skills: updatedSkills })
-    if (updatedSkills.length > 0) {
-      setSkillsError("")
-    }
+    if (updatedSkills.length > 0) setSkillsError("")
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (formData.skills.length === 0) {
-      setSkillsError("Please select at least one skill")
-      return
-    }
-    onSubmit(formData)
+  const handleSubmit = async (e) => {
+  e.preventDefault()
+  if (formData.skills.length === 0) {
+    setSkillsError("Please select at least one skill")
+    return
   }
+
+  setLoading(true)
+
+   const token = localStorage.getItem("token") // ✅ Correctly get token
+
+  try {
+    const res = await fetch("http://localhost:5000/api/engineers/post", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(formData),
+    })
+
+    const data = await res.json()
+
+    if (!res.ok) {
+      throw new Error(data.message || "Failed to add engineer")
+    }
+
+    // ✅ Notify parent
+    onEngineerAdded(data.data)
+
+    // ✅ Optionally close the modal
+    onClose()
+  } catch (error) {
+    console.error("Error adding engineer:", error)
+    alert(error.message)
+  } finally {
+    setLoading(false)
+  }
+}
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
@@ -213,10 +220,11 @@ export default function AddEngineerModal({ onClose, onSubmit }) {
             </div>
           </div>
 
+          
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">Skills</label>
             <div className="max-h-32 overflow-y-auto border border-gray-300 rounded-md p-3">
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {skillOptions.map((skill) => (
                   <label key={skill} className="flex items-center space-x-2 text-sm">
                     <input
@@ -243,9 +251,10 @@ export default function AddEngineerModal({ onClose, onSubmit }) {
             </button>
             <button
               type="submit"
+              disabled={loading}
               className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md"
             >
-              Add Engineer
+              {loading ? "Adding..." : "Add Engineer"}
             </button>
           </div>
         </form>

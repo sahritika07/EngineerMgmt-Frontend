@@ -6,6 +6,12 @@ const { protect, isAdminOrManager } = require("../middleware/auth")
 
 const router = express.Router()
 
+
+
+
+
+
+
 // @desc    Get all engineers
 // @route   GET /api/engineers
 // @access  Private (Admin/Manager)
@@ -78,6 +84,68 @@ router.get("/", protect, isAdminOrManager, async (req, res) => {
     })
   }
 })
+
+
+router.put("/post", protect, isAdminOrManager, async (req, res) => {
+  try {
+    const {
+      firstName,
+      lastName,
+      email,
+      username,
+      avatarUrl,
+      experienceLevel,
+      department,
+      hourlyRate,
+      availability,
+      location,
+      skills,
+    } = req.body;
+
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({
+        success: false,
+        message: "Engineer with this email already exists",
+      });
+    }
+
+    const newEngineer = await User.create({
+      firstName,
+      lastName,
+      email,
+      username,
+      avatar: avatarUrl || "/placeholder.svg",
+      role: "engineer",
+      experienceLevel,
+      department,
+      hourlyRate,
+      availability,
+      location,
+      skills,
+      password: "engineer123", // or generate a random password
+      isActive: true,
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "Engineer created successfully",
+      data: {
+        id: newEngineer._id,
+        name: newEngineer.fullName,
+        email: newEngineer.email,
+      },
+    });
+  } catch (error) {
+    console.error("Create engineer error:", error);
+    res.status(500).json({
+      success: false,
+      message: "Server error while creating engineer",
+    });
+  }
+})
+
 
 // @desc    Get engineer details with assignments and projects
 // @route   GET /api/engineers/:id
@@ -302,5 +370,68 @@ router.get("/:id/workload", protect, async (req, res) => {
     })
   }
 })
+
+
+
+// router.post("/post", protect, isAdminOrManager, async (req, res) => {
+//   console.log("converted to post")
+//   try {
+//     const {
+//       firstName,
+//       lastName,
+//       email,
+//       username,
+//       avatarUrl,
+//       experienceLevel,
+//       department,
+//       hourlyRate,
+//       availability,
+//       location,
+//       skills,
+//     } = req.body;
+
+//     // Check if user already exists
+//     const existingUser = await User.findOne({ email });
+//     if (existingUser) {
+//       return res.status(400).json({
+//         success: false,
+//         message: "Engineer with this email already exists",
+//       });
+//     }
+
+//     const newEngineer = await User.create({
+//       firstName,
+//       lastName,
+//       email,
+//       username,
+//       avatar: avatarUrl || "/placeholder.svg",
+//       role: "engineer",
+//       experienceLevel,
+//       department,
+//       hourlyRate,
+//       availability,
+//       location,
+//       skills,
+//       password: "engineer123", // or generate a random password
+//       isActive: true,
+//     });
+
+//     res.status(201).json({
+//       success: true,
+//       message: "Engineer created successfully",
+//       data: {
+//         id: newEngineer._id,
+//         name: newEngineer.fullName,
+//         email: newEngineer.email,
+//       },
+//     });
+//   } catch (error) {
+//     console.error("Create engineer error:", error);
+//     res.status(500).json({
+//       success: false,
+//       message: "Server error while creating engineer",
+//     });
+//   }
+// });
 
 module.exports = router

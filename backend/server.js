@@ -256,12 +256,12 @@ app.use((err, req, res, next) => {
 })
 
 // 404 handler for undefined routes
-app.use("*", (req, res) => {
-  res.status(404).json({
-    success: false,
-    message: `Route ${req.originalUrl} not found`,
-  })
-})
+// app.use("*", (req, res) => {
+//   res.status(404).json({
+//     success: false,
+//     message: `Route ${req.originalUrl} not found`,
+//   })
+// })
 
 // Start server
 const server = app.listen(PORT, () => {
