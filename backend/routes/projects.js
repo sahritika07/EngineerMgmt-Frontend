@@ -102,7 +102,7 @@ router.get("/:id", protect, async (req, res) => {
 router.post("/", protect, isAdminOrManager, async (req, res) => {
   try {
     const { name, description, priority, deadline, budget, technologies, teamMembers } = req.body
-
+    console.log( name, description, priority, deadline, budget, technologies, teamMembers)
     // Set manager to current user if not admin
     const manager = req.user.role === "admin" ? req.body.manager || req.user.id : req.user.id
 

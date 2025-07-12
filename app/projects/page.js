@@ -127,11 +127,14 @@ export default function Projects() {
       )}
 
       {showCreateModal && (
-        <CreateProjectModal
-          onClose={() => setShowCreateModal(false)}
-          onSubmit={handleCreateProject}
-        />
-      )}
+  <CreateProjectModal
+    onClose={() => {
+      setShowCreateModal(false);
+      fetchProjects();
+    }}
+    // onSubmit={handleCreateProject}
+  />
+)}
     </div>
   )
 }

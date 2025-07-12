@@ -32,7 +32,7 @@ const ProjectSchema = new mongoose.Schema(
     },
     deadline: {
       type: Date,
-      required: [false, "Project deadline is required"],
+      required: [true, "Project deadline is required"],
       validate: {
         validator: (value) => value > new Date(),
         message: "Deadline must be in the future",
@@ -40,7 +40,7 @@ const ProjectSchema = new mongoose.Schema(
     },
     budget: {
       type: Number,
-      required: [false, "Project budget is required"],
+      required: [true, "Project budget is required"],
       min: [0, "Budget cannot be negative"],
     },
     budgetUsed: {
