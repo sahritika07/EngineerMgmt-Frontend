@@ -7,7 +7,7 @@ const navigation = {
     { name: "Executive Dashboard", href: "/dashboard", icon: "dashboard" },
     { name: "Projects", href: "/projects", icon: "projects" },
     { name: "Engineers", href: "/engineers", icon: "engineers" },
-    { name: "Assignments", href: "/assignments", icon: "assignments" },
+    // { name: "Assignments", href: "/assignments", icon: "assignments" },
     { name: "Analytics", href: "/analytics", icon: "analytics" },
     { name: "Settings", href: "/settings", icon: "settings" },
   ],
@@ -15,7 +15,7 @@ const navigation = {
     { name: "Manager Dashboard", href: "/dashboard", icon: "dashboard" },
     { name: "Projects", href: "/projects", icon: "projects" },
     { name: "Engineers", href: "/engineers", icon: "engineers" },
-    { name: "Assignments", href: "/assignments", icon: "assignments" },
+    // { name: "Assignments", href: "/assignments", icon: "assignments" },
     { name: "Analytics", href: "/analytics", icon: "analytics" },
     { name: "Settings", href: "/settings", icon: "settings" },
   ],
@@ -113,13 +113,19 @@ function SidebarContent({ user, userNavigation, pathname, onLogout }) {
       <div className="flex items-center flex-shrink-0 px-4 py-6">
         <div className="flex items-center">
           <div className="bg-blue-600 p-2 rounded-lg">
-            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+ <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+  <path d="M10 2a2 2 0 00-2 2v2h8V4a2 2 0 00-2-2h-4zm-6 6v2h16V8H4zm0 4v2h16v-2H4zm0 4v2a2 2 0 002 2h12a2 2 0 002-2v-2H4z" />
+</svg>
+
+
+
+
+
+
           </div>
           <div className="ml-3">
-            <h1 className="text-white text-lg font-semibold">ResourcePro</h1>
-            <p className="text-slate-300 text-sm">Engineering Management</p>
+            <h1 className="text-white text-lg font-sm">Engineering Resource</h1>
+            <p className="text-slate-300 text-sm"> Management System</p>
           </div>
         </div>
       </div>

@@ -99,7 +99,7 @@ export default function ProjectCard({ project }) {
         <div className="flex items-center">
           <img
             className="w-8 h-8 rounded-full"
-            src={project.manager.avatar || "/placeholder.svg"}
+            src={project.manager.avatar || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
             alt={project.manager.name}
           />
           <div className="ml-3">

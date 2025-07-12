@@ -21,7 +21,8 @@ export default function EngineerCard({ engineer }) {
       <div className="flex items-start space-x-4 mb-4">
         <img
           className="w-16 h-16 rounded-full"
-          src={engineer.avatar || "/placeholder.svg"}
+          // src={engineer.avatar || "/placeholder.svg"}
+          src={engineer.avatar || "https://cdn-icons-png.flaticon.com/512/149/149071.png"}
           alt={`${engineer.firstName} ${engineer.lastName}`}
         />
         <div className="flex-1">

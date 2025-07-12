@@ -66,9 +66,10 @@ export default function Register() {
           <div className="text-center mb-8">
             <div className="flex justify-center mb-4">
               <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-3 rounded-xl shadow-lg">
-                <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+               <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+  <path d="M10 2a2 2 0 00-2 2v2h8V4a2 2 0 00-2-2h-4zm-6 6v2h16V8H4zm0 4v2h16v-2H4zm0 4v2a2 2 0 002 2h12a2 2 0 002-2v-2H4z" />
+</svg>
+
               </div>
             </div>
             <h2 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h2>
