@@ -48,6 +48,12 @@ https://github.com/user-attachments/assets/0d90956d-66ac-45f2-a8f4-7aa67bd98d3a
 - **Development Assistance**: ChatGPT and AI tools used for code optimization and feature development
 - **Future Enhancements**: Planned integration with OpenAI API for advanced features
 
+More AI Integration Ideas for future enhancement:
+
+- **Voice Commands for Admins/Managers**: “Assign this task to best available engineer”.
+- **Weekly Project Summary via AI**: Auto-generated project summary sent every Friday.
+- **Smart Notifications**: “This engineer is overloaded”, “This project is behind”.
+
 ## 📋 Prerequisites
 
 Before running this application, make sure you have the following installed:
