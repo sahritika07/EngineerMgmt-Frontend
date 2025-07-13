@@ -2,6 +2,8 @@
 
 A fullstack application to manage engineering teams, projects, assignments, and performance metrics. Built with **Next.js** for the frontend and **Node.js + Express + MongoDB** for the backend.
 
+
+
 ## 📦 Tech Stack
 
 ### Frontend
