@@ -73,7 +73,7 @@ export default function Register() {
               </div>
             </div>
             <h2 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h2>
-            <p className="text-gray-600">Join ResourcePro Engineering Management</p>
+            <p className="text-gray-600">Join Engeering RMS</p>
           </div>
 
           <form className="space-y-6" onSubmit={handleSubmit}>

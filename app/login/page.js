@@ -61,7 +61,7 @@ export default function Login() {
               </div>
             </div>
             <h2 className="text-3xl font-bold text-gray-900 mb-2">Welcome back</h2>
-            <p className="text-gray-600">Sign in to ResourcePro Engineering Management</p>
+            <p className="text-gray-600">Sign in to Engeering RMS</p>
           </div>
 
           <form className="space-y-6" onSubmit={handleSubmit}>
