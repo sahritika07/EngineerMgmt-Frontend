@@ -1,6 +1,11 @@
 # # 🚀 Engineering Resource Management System
-
 A fullstack application to manage engineering teams, projects, assignments, and performance metrics. Built with **Next.js** for the frontend and **Node.js + Express + MongoDB** for the backend.
+
+
+
+https://github.com/user-attachments/assets/0d90956d-66ac-45f2-a8f4-7aa67bd98d3a
+
+
 
 
 
