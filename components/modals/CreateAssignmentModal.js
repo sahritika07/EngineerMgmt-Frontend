@@ -28,13 +28,13 @@ export default function CreateAssignmentModal({ onClose, onSubmit }) {
 
     try {
       const [projectsResponse, engineersResponse] = await Promise.all([
-        fetch("http://localhost:5000/api/projects", {
+        fetch("https://engineermgnt-system-backend.onrender.com/api/projects", {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         }),
-        fetch("http://localhost:5000/api/engineers", {
+        fetch("https://engineermgnt-system-backend.onrender.com//engineers", {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",

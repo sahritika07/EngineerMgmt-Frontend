@@ -22,7 +22,7 @@ export default function Assignments() {
 
   const fetchAssignments = async (token) => {
     try {
-      const response = await fetch("http://localhost:5000/api/assignments", {
+      const response = await fetch("https://engineermgnt-system-backend.onrender.com/api/assignments", {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -47,7 +47,7 @@ export default function Assignments() {
     const token = localStorage.getItem("token")
 
     try {
-      const response = await fetch("http://localhost:5000/api/assignments", {
+      const response = await fetch("https://engineermgnt-system-backend.onrender.com/api/assignments", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -78,7 +78,7 @@ export default function Assignments() {
     const token = localStorage.getItem("token")
 
     try {
-      const response = await fetch(`http://localhost:5000/api/assignments/${id}`, {
+      const response = await fetch(`https://engineermgnt-system-backend.onrender.com/api/assignments/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

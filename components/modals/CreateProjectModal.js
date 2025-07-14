@@ -23,7 +23,7 @@ export default function CreateProjectModal({ onClose, onSubmit }) {
   e.preventDefault();
 
   try {
-    const response = await fetch("http://localhost:5000/api/projects", {
+    const response = await fetch("https://engineermgnt-system-backend.onrender.com/api/projects", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

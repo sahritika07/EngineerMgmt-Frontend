@@ -26,7 +26,7 @@ export default function Projects() {
     try {
       const token = localStorage.getItem("token")
       console.log(token)
-      const response = await axios.get("http://localhost:5000/api/projects", {
+      const response = await axios.get("https://engineermgnt-system-backend.onrender.com/api/projects", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -43,7 +43,7 @@ export default function Projects() {
     try {
       const token = localStorage.getItem("token")
       const response = await axios.post(
-        "http://localhost:5000/api/projects",
+        "https://engineermgnt-system-backend.onrender.com/api/projects",
         formData,
         {
           headers: {
