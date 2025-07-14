@@ -1,6 +1,13 @@
 # # 🚀 Engineering Resource Management System
-
 A fullstack application to manage engineering teams, projects, assignments, and performance metrics. Built with **Next.js** for the frontend and **Node.js + Express + MongoDB** for the backend.
+
+
+
+https://github.com/user-attachments/assets/0d90956d-66ac-45f2-a8f4-7aa67bd98d3a
+
+
+
+
 
 ## 📦 Tech Stack
 
@@ -36,11 +43,16 @@ A fullstack application to manage engineering teams, projects, assignments, and 
 
 
 
-
 ### AI Integration
 - **Project Description Generation**: AI-powered automatic description generation based on project names
 - **Development Assistance**: ChatGPT and AI tools used for code optimization and feature development
 - **Future Enhancements**: Planned integration with OpenAI API for advanced features
+
+More AI Integration Ideas for future enhancement:
+
+- **Voice Commands for Admins/Managers**: “Assign this task to best available engineer”.
+- **Weekly Project Summary via AI**: Auto-generated project summary sent every Friday.
+- **Smart Notifications**: “This engineer is overloaded”, “This project is behind”.
 
 ## 📋 Prerequisites
 
@@ -136,58 +148,15 @@ npm run dev
 
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:5000/api
-- **API Documentation**: http://localhost:5000/api-docs (if implemented)
+- **API Documentation**: http://localhost:5000/api
+
+🛡️ Authentication Roles
+
+Admin: Full access to users, projects, assignments
+Manager: Can manage projects they created
+Engineer: Can view assigned projects/tasks only
 
 
-
-## 🌐 API Integration with Axios
-
-The frontend uses **Axios** as the HTTP client for seamless API communication with the backend. Here's how it's implemented:
-
-### API Service Architecture
-
-\`\`\`javascript
-// services/api.js
-import axios from 'axios'
-
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'
-
-class ApiService {
-  constructor() {
-    this.client = axios.create({
-      baseURL: API_BASE_URL,
-      timeout: 10000,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-
-    // Request interceptor for adding auth token
-    this.client.interceptors.request.use(
-      (config) => {
-        const token = localStorage.getItem('token')
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`
-        }
-        return config
-      },
-      (error) => Promise.reject(error)
-    )
-
-    // Response interceptor for handling errors
-    this.client.interceptors.response.use(
-      (response) => response.data,
-      (error) => {
-        if (error.response?.status === 401) {
-          localStorage.removeItem('token')
-          window.location.href = '/login'
-        }
-        return Promise.reject(error.response?.data || error.message)
-      }
-    )
-  }
-}
-\`\`\`
 
 ### Key Benefits of Axios Integration:
 
