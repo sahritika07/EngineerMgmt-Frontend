@@ -18,9 +18,10 @@ export default function Header({ user, setSidebarOpen, onLogout }) {
   }
 
   return (
-    <div className="relative z-10 flex-shrink-0 flex h-16 bg-white shadow">
+    <div className="relative z-10 flex-shrink-0 flex h-16 bg-white shadow px-4 sm:px-6 lg:px-8">
+      {/* Mobile Menu Button */}
       <button
-        className="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 md:hidden"
+        className="mr-2 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500 md:hidden"
         onClick={() => setSidebarOpen(true)}
       >
         <span className="sr-only">Open sidebar</span>
@@ -29,25 +30,29 @@ export default function Header({ user, setSidebarOpen, onLogout }) {
         </svg>
       </button>
 
-      <div className="flex-1 px-4 flex justify-between items-center">
-        <div>
-          <h1 className="text-2xl font-semibold text-gray-900">{getDashboardTitle()}</h1>
-          <p className="text-sm text-gray-600">Resource utilization and project performance overview</p>
+      <div className="flex-1 flex flex-col sm:flex-row sm:items-center sm:justify-between overflow-hidden">
+        {/* Dashboard Title + Subtitle */}
+        <div className="text-center sm:text-left">
+          <h1 className="text-lg sm:text-2xl font-semibold text-gray-900 truncate">{getDashboardTitle()}</h1>
+          <p className="text-xs sm:text-sm text-gray-600 truncate">
+            Resource utilization and project performance overview
+          </p>
         </div>
 
-        <div className="ml-4 flex items-center md:ml-6 space-x-4">
-          {/* AI Recommendations */}
-          <button className="btn-green flex items-center space-x-1">
+        {/* Right Side Buttons */}
+        <div className="mt-2 sm:mt-0 flex flex-wrap justify-center sm:justify-end items-center gap-2 sm:gap-4">
+          {/* AI Recommendations - Hidden on small screens */}
+          <button className="hidden sm:flex btn-green items-center space-x-1 text-sm sm:text-base px-2 sm:px-4 py-1">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
             <span>3 AI Recommendations</span>
           </button>
 
-          {/* Notifications */}
-          <div className="relative">
+          {/* Notifications - Hidden on small screens */}
+          <div className="relative hidden sm:flex">
             <button
-              className="bg-gray-50 p-2 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 border border-gray-200 hover:border-gray-300 transition-all duration-200"
+              className="bg-gray-50 p-2 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 border border-gray-200 hover:border-gray-300"
               onClick={() => setShowNotifications(!showNotifications)}
             >
               <span className="sr-only">View notifications</span>
@@ -65,8 +70,8 @@ export default function Header({ user, setSidebarOpen, onLogout }) {
             </button>
           </div>
 
-          {/* Export Report */}
-          <button className="btn-blue  flex items-center space-x-2">
+          {/* Export Report - Hidden on small screens */}
+          <button className="hidden sm:flex btn-blue items-center space-x-1 text-sm sm:text-base px-2 sm:px-4 py-1">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
@@ -75,7 +80,7 @@ export default function Header({ user, setSidebarOpen, onLogout }) {
                 d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
               />
             </svg>
-            <span>Export Report</span>
+            <span>Export</span>
           </button>
         </div>
       </div>
